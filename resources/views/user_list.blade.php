@@ -70,7 +70,7 @@
                               <a href="/delete-user/{{$userDtl->id}}" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger btn-sm"> <i class="mdi mdi-delete btn-icon-prepend"></i> </a>                         
                             </td>
                             <td>
-                              <a href="/edit-user-password/{{$userDtl->id}}" class="btn btn-outline-success btn-sm">  <i class="mdi mdi-pencil btn-icon-append"></i>password-change</a>                          
+                              <a href="/edit-user-password/{{$userDtl->id}}" class="btn btn-outline-success btn-sm">  <i class="mdi mdi-pencil btn-icon-append"></i></a>                          
                             </td>
                           </tr>
                           @endforeach

@@ -91,9 +91,9 @@ class UserController extends Controller
             }
          
             $rand = rand(10000,99999);
-            $imageName = time(). '_img_'.$rand.'.' . $profile_img->extension();
-            $profile_img->move(public_path('images/user'), $imageName);
-            $relativePath = 'images/user/' . $imageName;
+            $imageName = time(). '_profileiimg_'.$rand.'.' . $profile_img->extension();
+            $profile_img->move(public_path('images/profile'), $imageName);
+            $relativePath = 'images/profile/' . $imageName;
         }
         else if(empty($request->image)){
             $relativePath = $old_img; 
