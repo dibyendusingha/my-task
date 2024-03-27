@@ -108,14 +108,15 @@
 <script>
       function validateForm() {
         // Validate Name field
-        var nameRegex = /^[A-Za-z]+$/;
+        // var nameRegex = /^[A-Za-z]+$/;
         if ($("#name").val() == "") {
           alert("Please enter your name!");
           return false;
-        } else if (!nameRegex.test($("#name").val())) {
-          alert("Name should contain only alphabetic characters!");
-          return false;
-        }
+        } 
+        // else if (!nameRegex.test($("#name").val())) {
+        //   alert("Name should contain only alphabetic characters!");
+        //   return false;
+        // }
 
         // Validate Email field
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
