@@ -53,6 +53,7 @@
                             <th> Email </th>
                             <th> Mobile </th>
                             <th> Action</th>
+                            <th>Change Password</th>
                           </tr>
                         </thead>
                         @if(!empty($userDtls[0]))
@@ -62,11 +63,14 @@
                             <td>{{$key+1}}</td>
                             <td> <img class="img-xs rounded-circle " src="{{asset( $userDtl->profile_img)}}" onerror="this.onerror=null; this.src='{{ asset('images/no-img.png') }}';"></td>
                             <td>{{$userDtl->name}} </td>
-                            <td> {{$userDtl->email}}  </td>
+                            <td> {{$userDtl->email}}  </td> 
                             <td> {{$userDtl->mobile}} </td>
                             <td>
                               <a href="/edit-user/{{$userDtl->id}}" class="btn btn-primary btn-sm">  <i class="mdi mdi-pencil btn-icon-append"></i></a>   
                               <a href="/delete-user/{{$userDtl->id}}" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger btn-sm"> <i class="mdi mdi-delete btn-icon-prepend"></i> </a>                         
+                            </td>
+                            <td>
+                              <a href="/edit-user-password/{{$userDtl->id}}" class="btn btn-outline-success btn-sm">  <i class="mdi mdi-pencil btn-icon-append"></i>password-change</a>                          
                             </td>
                           </tr>
                           @endforeach

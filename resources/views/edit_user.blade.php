@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Edit User</h4>
                         <!-- <p class="card-description"> Horizontal form layout </p> -->
-                        <form class="forms-sample" action="{{url('update-user',$edit_user->id)}}" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{url('update-user',$edit_user->id)}}" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
@@ -103,6 +103,47 @@
 <script src="assets/js/file-upload.js"></script>
 <script src="assets/js/typeahead.js"></script>
 <script src="assets/js/select2.js"></script>
+
+
+<script>
+      function validateForm() {
+        // Validate Name field
+        var nameRegex = /^[A-Za-z]+$/;
+        if ($("#name").val() == "") {
+          alert("Please enter your name!");
+          return false;
+        } else if (!nameRegex.test($("#name").val())) {
+          alert("Name should contain only alphabetic characters!");
+          return false;
+        }
+
+        // Validate Email field
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if ($("#email").val() == "") {
+          alert("Please enter your email!");
+          return false;
+        } else if (!emailRegex.test($("#email").val())) {
+          alert("Please enter a valid email address!");
+          return false;
+        }
+
+        // Validate Mobile field
+        var mobileRegex = /^\d{10}$/;
+        if ($("#mobile").val() == "") {
+          alert("Please enter your mobile number!");
+          return false;
+        } else if (!mobileRegex.test($("#mobile").val())) {
+          alert("Mobile number should be 10 digits!");
+          return false;
+        }
+
+
+
+        // Add more validations here if needed
+
+        return true; // Submit the form if all validations pass
+      }
+    </script>
 
 
 @endsection

@@ -26,4 +26,7 @@ Route::get('/edit-user/{id}', [UserController::class, 'edit_user']);
 Route::post('/update-user/{id}', [UserController::class, 'update_user']);
 Route::get('/delete-user/{id}', [UserController::class, 'user_delete']);
 
+Route::get('/edit-user-password/{id}', [UserController::class, 'edit_password_user']);
+Route::post('/update-user-password/{id}', [UserController::class, 'update_password_user']);
+
 

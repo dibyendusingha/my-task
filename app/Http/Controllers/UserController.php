@@ -135,5 +135,46 @@ class UserController extends Controller
         return redirect('/')->with(['success' =>'Deleted Successfully']);
 
     }
+
+    public function edit_password_user($id){
+        $edit_user = User::where('id',$id)->first();
+        return view('change_password',['edit_user'=>$edit_user]);
+    }
+
+    public function update_password_user(Request $request,$user_id){
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+            $output['response']=false;
+            $output['message']='Validation error!';
+            $output['error'] = $validator->errors();
+            return $output;
+            exit;
+        }else{
+
+            try{
+                DB::beginTransaction();
+                $editUser = User::where('id',$user_id)->first();
+                $editUser->name              = $request->name;
+                $editUser->password          = Hash::make($request->password);
+
+                $editUser->update();
+                DB::commit();
+    
+                return redirect('/')->with(['success' =>'Password Update successfully.']);
+    
+            }catch (\Exception $e) {
+                return response()->json([
+                    'status' => false,
+                    'with' => 'error',
+                    'message' => 'Error creating . ' . $e->getMessage(),
+                ]);
+            } 
+        }
+    }
     
 }
