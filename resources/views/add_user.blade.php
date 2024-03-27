@@ -65,7 +65,7 @@
                       <div class="form-group row ">
                         <label class="col-sm-3 col-form-label">Image upload</label>
                         <div class="col-sm-9">
-                          <input type="file" name="image" class="file-upload-default">
+                          <input type="file" name="image" id="image"  class="file-upload-default">
                           <div class="input-group col-sm-9">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                             <span class="input-group-append">

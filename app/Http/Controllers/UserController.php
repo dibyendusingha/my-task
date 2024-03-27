@@ -48,7 +48,7 @@ class UserController extends Controller
                 $addUser->save();
                 DB::commit();
     
-                return redirect('add-user')->with(['success' =>'User created successfully.']);
+                return redirect('/')->with(['success' =>'User created successfully.']);
     
             }catch (\Exception $e) {
                 return response()->json([
@@ -56,6 +56,7 @@ class UserController extends Controller
                     'with' => 'error',
                     'message' => 'Error creating user. ' . $e->getMessage(),
                 ]);
+              //  return redirect('add-user')->with(['error' =>$e->getMessage()]);
             } 
         }
         return view('add_user');
@@ -127,6 +128,12 @@ class UserController extends Controller
                 ]);
             } 
         }
+    }
+
+    public function user_delete($user_id){
+        $user_details = User::where('id',$user_id)->delete();
+        return redirect('/')->with(['success' =>'Deleted Successfully']);
+
     }
     
 }

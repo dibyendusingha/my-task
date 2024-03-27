@@ -43,7 +43,7 @@
                     </div>           
                    
                     <div class="table-responsive">
-                    @if(!empty($userDtls[0]))
+                    
                       <table class="table table-bordered" id="data-table">
                         <thead >
                           <tr>
@@ -55,6 +55,7 @@
                             <th> Action</th>
                           </tr>
                         </thead>
+                        @if(!empty($userDtls[0]))
                         <tbody>
                             @foreach($userDtls as $key=> $userDtl)
                           <tr>
@@ -65,15 +66,24 @@
                             <td> {{$userDtl->mobile}} </td>
                             <td>
                               <a href="/edit-user/{{$userDtl->id}}" class="btn btn-primary btn-sm">  <i class="mdi mdi-pencil btn-icon-append"></i></a>   
-                              <button href="/delete-user/{{$userDtl->id}}" class="btn btn-danger btn-sm"> <i class="mdi mdi-delete btn-icon-prepend"></i> </button>                         
+                              <a href="/delete-user/{{$userDtl->id}}" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-danger btn-sm"> <i class="mdi mdi-delete btn-icon-prepend"></i> </a>                         
                             </td>
                           </tr>
                           @endforeach
                         </tbody>
+                        @else
+                        <tbody>
+                            
+                          <tr>
+                            <td colspan="20">No data found</td>
+                           
+                          </tr>
+                 
+                        </tbody>
+                          
+                        @endif
                       </table>
-                    @else
-                      No data found
-                    @endif
+                  
                     </div>
                   </div>
                 </div>
